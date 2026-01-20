@@ -65,9 +65,54 @@ A web application for managing NGO donations and user registrations. The project
    npm run dev
    # Runs on http://localhost:3000
    ```
+### Demo Credentials (For Testing Only)
 
-## Notes
-- **Connection Issues**: If `net::ERR_CONNECTION_REFUSED` occurs on localhost:3000, try restarting the client development server.
-- **Environment**: Ensure `.env` files are correctly set up in both client and server directories.
+- **Admin**
+  - Email: admin@ngo.com
+  - Password: admin123
+
+- **User**
+  - Email: ronak@gmail.com
+  - Password: ronak123
+
+- Important
+  - These accounts are for local/dev testing only; do not use in production.
+  - If they do not exist in your database, register them via the app.
+  - Change these passwords immediately when deploying publicly.
+  - Do not commit real credentials or API keys to the repository.
+
+## Tech Stack
+- Frontend: Next.js 15 (App Router)
+- Backend: Node.js, Express.js
+- Database: MongoDB
+- Authentication: JWT
+- Payments: Razorpay (Sandbox)
 
 ---
+## Features
+- Admin Overview: Total registrations; total donations; status counts
+- User Management: View users; filter by role/date; CSV export
+- Donation Management: View records; filter by status/date; CSV export
+- Authentication: JWT-based login/logout; role-based access control
+- Payments: Razorpay integration for creating and verifying orders
+- Responsive UI: Sidebar navigation with Dashboard, Donors, Donations
+
+## Folder Structure
+```
+ngo_dashboard/
+├─ client/               # Next.js frontend
+│  ├─ app/               # App Router pages
+│  ├─ context/           # Auth context
+│  ├─ utils/             # API client
+│  └─ public/            # Static assets
+├─ server/               # Express backend
+│  ├─ controllers/       # Route controllers
+│  ├─ routes/            # Express routes
+│  ├─ models/            # Mongoose schemas
+│  └─ middleware/        # Auth middleware
+└─ docs/                 # Project documentation
+```
+
+## Report
+- A detailed architecture report is available at docs/report.md.
+- Export to PDF using your browser’s “Print to PDF”.
