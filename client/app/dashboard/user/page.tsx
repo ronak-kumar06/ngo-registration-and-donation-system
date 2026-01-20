@@ -149,12 +149,12 @@ export default function UserDashboard() {
              setDonations((prev) => {
                const idx = prev.findIndex((d) => d.razorpayOrderId === order.id);
                const next = idx >= 0
-                 ? prev.map((d) => d.razorpayOrderId === order.id ? { ...d, paymentStatus: 'failed', transactionDate: new Date().toISOString() } : d)
+                 ? prev.map((d) => d.razorpayOrderId === order.id ? { ...d, paymentStatus: 'failed' as const, transactionDate: new Date().toISOString() } : d)
                  : [
                      {
                        _id: 'local_' + Date.now(),
                        amount: amount,
-                       paymentStatus: 'failed',
+                       paymentStatus: 'failed' as const,
                        transactionDate: new Date().toISOString(),
                        campaign: 'General Fund',
                        razorpayPaymentId: '',
@@ -178,12 +178,12 @@ export default function UserDashboard() {
           setDonations((prev) => {
             const idx = prev.findIndex((d) => d.razorpayOrderId === order.id);
             const next = idx >= 0
-              ? prev.map((d) => d.razorpayOrderId === order.id ? { ...d, paymentStatus: 'failed', transactionDate: new Date().toISOString() } : d)
+              ? prev.map((d) => d.razorpayOrderId === order.id ? { ...d, paymentStatus: 'failed' as const, transactionDate: new Date().toISOString() } : d)
               : [
                   {
                     _id: 'local_' + Date.now(),
                     amount: amount,
-                    paymentStatus: 'failed',
+                    paymentStatus: 'failed' as const,
                     transactionDate: new Date().toISOString(),
                     campaign: 'General Fund',
                     razorpayPaymentId: '',
@@ -356,7 +356,7 @@ export default function UserDashboard() {
                                 <CheckCircle size={12} className="fill-emerald-200" /> Success
                             </span>
                         )}
-                         {donation.paymentStatus === 'failed' && (
+                         {donation.paymentStatus === 'failed' as const && (
                              <span className="inline-flex items-center gap-1.5 text-rose-700 bg-rose-50 px-3 py-1 rounded-full text-xs font-medium border border-rose-100">
                                 <XCircle size={12} className="fill-rose-200" /> Failed
                             </span>
