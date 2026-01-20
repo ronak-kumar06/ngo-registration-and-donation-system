@@ -145,12 +145,12 @@ export default function UserTransactions() {
         setDonations((prev) => {
           const idx = prev.findIndex((d) => d.razorpayOrderId === order.id);
           const next = idx >= 0
-            ? prev.map((d) => d.razorpayOrderId === order.id ? { ...d, paymentStatus: 'failed', transactionDate: new Date().toISOString() } : d)
+            ? prev.map((d) => d.razorpayOrderId === order.id ? { ...d, paymentStatus: 'failed' as const, transactionDate: new Date().toISOString() } : d)
             : [
                 {
                   _id: 'local_' + Date.now(),
                   amount: donation.amount,
-                  paymentStatus: 'failed',
+                  paymentStatus: 'failed' as const,
                   transactionDate: new Date().toISOString(),
                   campaign: donation.campaign || 'General Fund',
                   razorpayPaymentId: '',
@@ -175,12 +175,12 @@ export default function UserTransactions() {
         setDonations((prev) => {
           const idx = prev.findIndex((d) => d.razorpayOrderId === order.id);
           const next = idx >= 0
-            ? prev.map((d) => d.razorpayOrderId === order.id ? { ...d, paymentStatus: 'failed', transactionDate: new Date().toISOString() } : d)
+            ? prev.map((d) => d.razorpayOrderId === order.id ? { ...d, paymentStatus: 'failed' as const, transactionDate: new Date().toISOString() } : d)
             : [
                 {
                   _id: 'local_' + Date.now(),
                   amount: donation.amount,
-                  paymentStatus: 'failed',
+                  paymentStatus: 'failed' as const,
                   transactionDate: new Date().toISOString(),
                   campaign: donation.campaign || 'General Fund',
                   razorpayPaymentId: '',
@@ -303,14 +303,14 @@ export default function UserTransactions() {
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
-              {donations.filter(d => d.paymentStatus !== 'pending').length === 0 ? (
+              {donations.filter(d => d.paymentStatus !== 'pending' as const).length === 0 ? (
                 <tr>
                   <td colSpan={6} className="text-center py-8">
                     No completed or failed transactions yet.
                   </td>
                 </tr>
               ) : (
-                donations.filter(d => d.paymentStatus !== 'pending').map((donation) => (
+                donations.filter(d => d.paymentStatus !== 'pending' as const).map((donation) => (
                   <tr key={donation._id} className="hover:bg-slate-50/80 transition-colors">
                     <td className="px-8 py-5 font-mono text-xs text-slate-400">
                       #{(donation.razorpayPaymentId && donation.razorpayPaymentId.slice(-8)) || (donation.razorpayOrderId && donation.razorpayOrderId.slice(-8)) || 'FAILED'}
@@ -319,19 +319,19 @@ export default function UserTransactions() {
                     <td className="px-8 py-5 text-slate-500">{new Date(donation.transactionDate).toLocaleDateString()}</td>
                     <td className="px-8 py-5 font-bold text-slate-800">{donation.amount} {donation.currency || ''}</td>
                     <td className="px-8 py-5">
-                      {donation.paymentStatus === 'success' && (
+                      {donation.paymentStatus === 'success' as const && (
                         <span className="inline-flex items-center gap-1.5 text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full text-xs font-medium border border-emerald-100">
                           <CheckCircle size={12} className="fill-emerald-200" /> Success
                         </span>
                       )}
-                      {donation.paymentStatus === 'failed' && (
+                      {donation.paymentStatus === 'failed' as const && (
                         <span className="inline-flex items-center gap-1.5 text-rose-700 bg-rose-50 px-3 py-1 rounded-full text-xs font-medium border border-rose-100">
                           <XCircle size={12} className="fill-rose-200" /> Failed
                         </span>
                       )}
                     </td>
                     <td className="px-8 py-5">
-                      {donation.paymentStatus === 'failed' && (
+                      {donation.paymentStatus === 'failed' as const && (
                         <button
                           onClick={() => handleRetry(donation)}
                           className="text-indigo-600 text-sm font-semibold hover:text-indigo-700 hover:bg-indigo-50 px-3 py-1.5 rounded-lg transition-all cursor-pointer"
@@ -339,7 +339,7 @@ export default function UserTransactions() {
                           Retry
                         </button>
                       )}
-                      {donation.paymentStatus === 'success' && (
+                      {donation.paymentStatus === 'success' as const && (
                         <button className="text-slate-600 text-sm font-semibold hover:text-slate-900 hover:bg-slate-50 px-3 py-1.5 rounded-lg transition-all cursor-pointer">
                           Receipt
                         </button>
