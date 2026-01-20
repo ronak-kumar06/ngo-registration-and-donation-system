@@ -3,15 +3,6 @@
 ## Overview
 A web application for managing NGO donations and user registrations. The project consists of a Next.js frontend and an Express/Node.js backend.
 
-## Live Demo
-- **Frontend**: [https://ngo-registration-and-donation-system-qmop-9k817cqqr.vercel.app](https://ngo-registration-and-donation-system-qmop-9k817cqqr.vercel.app)
-- **Backend API**: [https://ngo-registration-and-donation-system.onrender.com](https://ngo-registration-and-donation-system.onrender.com)
-
-## Deployment
-- **Frontend**: Deployed on Vercel
-- **Backend**: Deployed on Render
-- **Payments**: Integrated using Razorpay (Test Mode)
-
 ## Recent Updates (Jan 2026)
 
 ### 1. Payment Integration
