@@ -6,6 +6,14 @@ const connectDB = require('./config/db');
 // Load env vars
 dotenv.config();
 
+import cors from "cors";
+
+app.use(cors({
+  origin: "*",
+  credentials: true
+}));
+
+
 // Connect to database
 connectDB();
 
